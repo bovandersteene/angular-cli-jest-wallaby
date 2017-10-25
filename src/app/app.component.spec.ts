@@ -29,4 +29,9 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
   }));
+
+  it('should match the snapshot', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    expect(fixture).toMatchSnapshot('no-icon-selected');
+  });
 });
