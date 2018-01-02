@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testExecutions version="1">
-  <file path="/Users/bovandersteene/projects/github/angular-cli-jest-wallaby/src/app/app.component.spec.ts">
-    <testCase name="AppComponent should create the app" duration="130"/>
-    <testCase name="AppComponent should have as title &apos;app&apos;" duration="41"/>
-    <testCase name="AppComponent should render title in a h1 tag" duration="47"/>
-    <testCase name="AppComponent should match the snapshot" duration="45"/>
-  </file>
-</testExecutions>
