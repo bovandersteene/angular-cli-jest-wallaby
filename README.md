@@ -1,3 +1,7 @@
+Complete application documentated on:  [Angular + Jest + Wallabyjs why it is the ideal combination! And how to configure](https://medium.com/@bo.vandersteene/angular-jest-wallabyjs-why-it-is-the-ideal-combination-and-how-to-configure-b4cbe2eff4b3)
+
+This library is an example of using [ngx-wallaby-jest](https://github.com/bovandersteene/ngx-wallaby-jest), an implementation for using wallabyjs, jest and angular toghether.
+
 # AngularCliJestWallaby
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
@@ -16,7 +20,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `yarn test` to execute the unit tests via jest
+Run `yarn test:coverage` to execute the test coverage
 
 ## Running end-to-end tests
 
