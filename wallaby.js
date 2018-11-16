@@ -1,36 +1,43 @@
 const ngxWallabyJest = require('ngx-wallaby-jest');
 
-module.exports = function (wallaby) {
-    return {
-        files: [
-            //Files used for testing
-            {pattern: 'tsconfig.json', load: false},
-            {pattern: 'jest.config.js', load: false},
-            {pattern: 'src/setupJest.ts', load: false},
-            {pattern: 'src/tsconfig.spec.json', load: false},
-            {pattern: 'src/app/**/*.ts', load: false},
-            {pattern: 'test/**/*.ts', load: false},
-            {pattern: 'spec-bundle-wallaby.js', load: false},
-            {pattern: 'src/app/**/*.spec.ts', ignore: true},
-            {pattern: 'src/app/**/*.d.ts', ignore: true},
-        ],
-        tests: ['src/app/**/*.spec.ts'],
-        env: {
-            //Jest tests runs on node, not on a browser!
-            type: 'node',
-            runner: 'node'
-        },
-        preprocessors: {
-            // This translate templateUrl and styleUrls to the right implementation
-            // For wallaby
-            'src/**/*.component.ts': ngxWallabyJest,
-        },
-        testFramework: 'jest',
-        setup: function (wallaby) {
-            //Use the configured jest file for testing
-            const jestConfig = require('./jest.config.js');
-            wallaby.testFramework.configure(jestConfig);
-        },
-        debug: true
-    };
+module.exports = function () {
+  return {
+    files: [
+      'src/**/*.+(ts|html|json|snap|css|less|sass|scss|jpg|jpeg|gif|png|svg)',
+      'tsconfig.json',
+      'tsconfig.spec.json',
+      'jest.config.js',
+      '!src/**/*.spec.ts',
+    ],
+
+    tests: ['src/**/*.spec.ts'],
+
+    env: {
+      type: 'node',
+      runner: 'node'
+    },
+    transform: [],
+
+
+    preprocessors: {
+      // This translate templateUrl and styleUrls to the right implementation
+      // For wallaby
+      'src/**/*.component.ts': ngxWallabyJest,
+      '**/*.js': [
+        (file) => require('babel-core').transform(file.content, {
+          sourceMap: true,
+          filename: file.path,
+          presets: [['env', {
+            targets: {
+              node: "6.10"
+            }
+          }
+          ]]
+        }),
+       // jestTransform
+      ]
+    },
+
+    testFramework: 'jest'
+  };
 };

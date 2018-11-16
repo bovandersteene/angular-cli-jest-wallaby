@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="/Users/bvd1n4r/projects/github/angular-cli-jest-wallaby/src/app/common/button/button.component.spec.ts">
+    <testCase name="ButtonComponent should create" duration="69"/>
+  </file>
+  <file path="/Users/bvd1n4r/projects/github/angular-cli-jest-wallaby/src/app/common/title/title.component.spec.ts">
+    <testCase name="TitleComponent should create" duration="68"/>
+  </file>
+  <file path="/Users/bvd1n4r/projects/github/angular-cli-jest-wallaby/src/app/app.component.spec.ts">
+    <testCase name="AppComponent should create the app" duration="85"/>
+    <testCase name="AppComponent should match the snapshot" duration="24"/>
+  </file>
+</testExecutions>

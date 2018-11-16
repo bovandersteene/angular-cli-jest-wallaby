@@ -1,23 +1,19 @@
 module.exports = {
-  mapCoverage: true,
   globals: {
-    '__TS_CONFIG__': {
-      'target': 'es6',
-      'module': 'commonjs',
-      'moduleResolution': 'node'
-    },
     'ts-jest': {
-      'tsConfigFile': 'src/tsconfig.spec.json'
+      tsConfigFile: './src/tsconfig.spec.json',
     },
-    '__TRANSFORM_HTML__': true
+    __TRANSFORM_HTML__: true,
   },
-  testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|js)$',
-  setupTestFrameworkScriptFile: '<rootDir>/src/setupJest.ts',
+  testMatch: ['**/__tests__/**/*.+(ts|js)?(x)', '**/+(*.)+(spec|test).+(ts|js)?(x)'],
+  setupTestFrameworkScriptFile: '<rootDir>/node_modules/@angular-builders/jest/src/jest-config/setup.js',
   transform: {
     '^.+\\.(ts|html)$': '<rootDir>/node_modules/jest-preset-angular/preprocessor.js',
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!@ngrx)'
+  transformIgnorePatterns: ['node_modules/(?!@ngrx)'],
+  moduleDirectories: [
+    "node_modules",
+    "src/app",
   ],
   collectCoverageFrom: [
     'src/app/module/**/*.{ts}',
@@ -33,13 +29,8 @@ module.exports = {
   moduleFileExtensions: [
     'ts',
     'tsx',
-    'js',
-    'json'
-  ],
-  testPathIgnorePatterns: [
-    '/node_modules/',
-    '/dist/',
-    'src/app/*.{js}'
+    'json',
+    'js'
   ],
   testResultsProcessor: 'jest-sonar-reporter',
   moduleNameMapper: {
