@@ -1,6 +1,6 @@
 const ngxWallabyJest = require('ngx-wallaby-jest');
 
-module.exports = function () {
+module.exports = function (wallaby) {
   return {
     files: [
       'src/**/*.+(ts|html|json|snap|css|less|sass|scss|jpg|jpeg|gif|png|svg)',
@@ -16,28 +16,14 @@ module.exports = function () {
       type: 'node',
       runner: 'node'
     },
-    transform: [],
-
-
+    compilers: {
+      '**/*.ts?(x)': wallaby.compilers.typeScript({ module: 'commonjs' }),
+    },
     preprocessors: {
       // This translate templateUrl and styleUrls to the right implementation
       // For wallaby
-      'src/**/*.component.ts': ngxWallabyJest,
-      '**/*.js': [
-        (file) => require('babel-core').transform(file.content, {
-          sourceMap: true,
-          filename: file.path,
-          presets: [['env', {
-            targets: {
-              node: "6.10"
-            }
-          }
-          ]]
-        }),
-       // jestTransform
-      ]
+      'projects/**/*.component.ts': ngxWallabyJest,
     },
-
     testFramework: 'jest'
   };
 };
